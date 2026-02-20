@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | DRILL STUDIOS</title>
+    <style>
+        :root { --primary: #ff0000; --bg: #0a0a0a; --card: #151515; }
+        body { margin: 0; font-family: sans-serif; background: var(--bg); color: white; }
+        nav { padding: 20px; display: flex; justify-content: center; gap: 30px; background: #000; border-bottom: 2px solid var(--primary); }
+        nav a { color: white; text-decoration: none; font-weight: bold; }
+        .container { padding: 50px 10%; }
+        h1 { color: var(--primary); font-size: 3rem; text-align: center; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .project-card { background: var(--card); border: 1px solid #333; border-radius: 15px; overflow: hidden; transition: 0.3s; }
+        .project-card:hover { border-color: var(--primary); transform: scale(1.02); }
+        .content { padding: 20px; }
+        .tag { background: var(--primary); padding: 5px 10px; font-size: 0.8rem; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="projects.html">Our Games</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <div class="container">
+        <h1>OUR DROPS</h1>
+        <div class="grid">
+            <div class="project-card">
+                <div class="content">
+                    <span class="tag">ROBLOX</span>
+                    <h3>Drill Simulator</h3>
+                    <p>High-octane gameplay with custom UI and data saving.</p>
+                    <a href="https://roblox.com" style="color:red; text-decoration:none;">Play Now →</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="content">
+                    <span class="tag">DISCORD</span>
+                    <h3>Utility Bot</h3>
+                    <p>Advanced moderation and economy for your server.</p>
+                    <a href="https://discord.gg/xNguXVnvmU" style="color:red; text-decoration:none;">Add Bot →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
