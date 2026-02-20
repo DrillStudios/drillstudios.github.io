@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | DRILL STUDIOS</title>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <style>
+        :root { --primary: #ff4d4d; --bg: #050505; --card-bg: rgba(255, 255, 255, 0.03); }
+        body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg); color: white; display: flex; flex-direction: column; min-height: 100vh; }
+        
+        nav { padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,77,77,0.2); }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); text-decoration: none; }
+        nav a { color: white; text-decoration: none; margin-left: 20px; }
+
+        .contact-container { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 50px 20px; text-align: center; }
+        h1 { font-size: 3.5rem; color: var(--primary); margin-bottom: 10px; }
+        p { opacity: 0.7; max-width: 500px; margin-bottom: 40px; }
+
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; width: 100%; max-width: 900px; }
+        .contact-card { background: var(--card-bg); padding: 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; text-decoration: none; color: white; }
+        .contact-card:hover { border-color: var(--primary); transform: translateY(-5px); background: rgba(255, 77, 77, 0.05); }
+        
+        .contact-card h3 { color: var(--primary); margin-bottom: 10px; }
+        .email-text { font-family: monospace; font-size: 1.1rem; letter-spacing: 1px; }
+
+        .back-home { margin-top: 50px; color: #666; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+        .back-home:hover { color: var(--primary); }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">DRILL</a>
+        <div>
+            <a href="index.html#work">Work</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <div class="contact-container">
+        <h1 class="reveal">GET IN TOUCH</h1>
+        <p class="reveal">For business inquiries, commissions, or partnerships, reach out through our official channels.</p>
+
+        <div class="contact-grid">
+            <div class="contact-card reveal">
+                <h3>Official Email</h3>
+                <p>Response time: 24-48 hours</p>
+                <div class="email-text">Drill-Studios@proton.me</div>
+            </div>
+
+            <a href="https://discord.gg/xNguXVnvmU" target="_blank" class="contact-card reveal">
+                <h3>Discord Server</h3>
+                <p>Join our community and open a ticket for instant support.</p>
+                <span style="color:var(--primary); font-weight:bold;">Join xNguXVnvmU →</span>
+            </a>
+        </div>
+
+        <a href="index.html" class="back-home">← Return to Homepage</a>
+    </div>
+
+    <script>
+        ScrollReveal().reveal('.reveal', { delay: 200, distance: '30px', origin: 'bottom', duration: 1000, interval: 200 });
+    </script>
+</body>
+</html>
