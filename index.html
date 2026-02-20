@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DRILL STUDIOS | Roblox & Discord Development</title>
+    <title>DRILL STUDIOS | Roblox & Discord</title>
     <script src="https://unpkg.com/scrollreveal"></script>
     <style>
         :root {
-            --primary: #ff4d4d; /* Drill Red */
+            --primary: #ff4d4d; 
             --bg: #050505;
             --card-bg: rgba(255, 255, 255, 0.03);
             --text: #ffffff;
@@ -17,13 +17,13 @@
 
         body {
             margin: 0;
-            font-family: 'Inter', 'Segoe UI', sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: var(--bg);
             color: var(--text);
             line-height: 1.6;
         }
 
-        /* Animated Background Dots */
+        /* Background Dots */
         .bg-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -41,19 +41,18 @@
             align-items: center;
             position: sticky;
             top: 0;
-            background: rgba(5, 5, 5, 0.8);
+            background: rgba(5, 5, 5, 0.9);
             backdrop-filter: blur(10px);
             z-index: 100;
             border-bottom: 1px solid rgba(255,77,77,0.2);
         }
 
-        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); letter-spacing: 2px; }
-        nav a { color: white; text-decoration: none; margin-left: 20px; font-weight: 500; transition: 0.3s; }
-        nav a:hover { color: var(--primary); }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); letter-spacing: 2px; text-decoration: none; }
+        nav a { color: white; text-decoration: none; margin-left: 20px; font-weight: 500; }
 
         /* Hero Section */
         header {
-            height: 90vh;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -62,61 +61,67 @@
             padding: 0 20px;
         }
 
-        h1 { font-size: clamp(3rem, 8vw, 6rem); margin: 0; text-transform: uppercase; letter-spacing: -2px; }
-        .red-glow { color: var(--primary); text-shadow: 0 0 30px rgba(255, 77, 77, 0.4); }
-        
-        .hero-p { font-size: 1.2rem; max-width: 600px; opacity: 0.7; margin-bottom: 30px; }
+        h1 { font-size: clamp(3.5rem, 10vw, 7rem); margin: 0; text-transform: uppercase; letter-spacing: -2px; line-height: 0.9; }
+        .red-glow { color: var(--primary); text-shadow: 0 0 30px rgba(255, 77, 77, 0.5); }
+        .hero-p { font-size: 1.3rem; max-width: 700px; opacity: 0.7; margin-top: 20px; }
 
-        /* Layout Sections */
-        section { padding: 100px 10%; }
-        h2 { font-size: 2.5rem; margin-bottom: 50px; border-left: 5px solid var(--primary); padding-left: 15px; }
+        /* General Section Styling */
+        section { padding: 120px 10%; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        h2 { font-size: 3rem; margin-bottom: 60px; color: var(--primary); text-transform: uppercase; }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
         }
 
         .card {
             background: var(--card-bg);
             padding: 40px;
-            border-radius: 20px;
+            border-radius: 24px;
             border: 1px solid rgba(255,255,255,0.05);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.4s ease;
         }
 
         .card:hover {
-            transform: scale(1.05);
-            background: rgba(255, 77, 77, 0.05);
             border-color: var(--primary);
+            transform: translateY(-10px);
+            background: rgba(255, 77, 77, 0.04);
         }
 
-        .card h3 { color: var(--primary); margin-top: 0; }
+        /* Contact Items */
+        .contact-box {
+            background: #111;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary);
+        }
 
         /* Buttons */
         .btn {
-            padding: 15px 35px;
+            display: inline-block;
+            padding: 18px 40px;
             background: var(--primary);
             color: white;
             text-decoration: none;
-            font-weight: bold;
-            border-radius: 8px;
+            font-weight: 900;
+            border-radius: 12px;
             transition: 0.3s;
-            box-shadow: 0 10px 20px rgba(255, 77, 77, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 20px;
         }
 
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(255, 77, 77, 0.4); }
+        .btn:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(255, 77, 77, 0.4); }
 
-        /* Footer */
         footer {
-            padding: 50px 10%;
+            padding: 80px 10%;
             background: #000;
             text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
         }
 
-        .copyright { opacity: 0.5; font-size: 0.9rem; margin-top: 20px; }
-
+        .copyright { opacity: 0.4; font-size: 0.8rem; margin-top: 40px; border-top: 1px solid #222; padding-top: 20px; }
     </style>
 </head>
 <body>
@@ -124,79 +129,13 @@
     <div class="bg-overlay"></div>
 
     <nav>
-        <div class="logo">DRILL STUDIOS</div>
+        <a href="#" class="logo">DRILL</a>
         <div>
-            <a href="#work">Work</a>
-            <a href="#services">Services</a>
+            <a href="#work">Projects</a>
             <a href="#contact">Contact</a>
         </div>
     </nav>
 
     <header>
-        <h1 class="reveal"><span class="red-glow">DRILL</span> STUDIOS</h1>
-        <p class="hero-p reveal">We build high-octane Roblox experiences and industry-leading Discord automation tools. Ready to drill into the next level?</p>
-        <a href="#work" class="btn reveal">EXPLORE PROJECTS</a>
-    </header>
-
-    <section id="services">
-        <h2 class="reveal">What We Do</h2>
-        <div class="grid">
-            <div class="card reveal">
-                <h3>Roblox Game Dev</h3>
-                <p>Full-stack Luau scripting, high-poly building, and UI design optimized for performance.</p>
-            </div>
-            <div class="card reveal">
-                <h3>Discord Engineering</h3>
-                <p>Advanced bots with database integration, custom dashboards, and secure API handling.</p>
-            </div>
-            <div class="card reveal">
-                <h3>VFX & GFX</h3>
-                <p>High-quality thumbnails, icons, and in-game particle effects that pop.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="work" style="background: rgba(255,255,255,0.02);">
-        <h2 class="reveal">Recent Drops</h2>
-        <div class="grid">
-            <div class="card reveal">
-                <h3>[GAME NAME]</h3>
-                <p>A fast-paced Roblox experience with 1M+ visits. Custom physics and combat systems.</p>
-                <a href="#" style="color:var(--primary); text-decoration:none;">View Case Study →</a>
-            </div>
-            <div class="card reveal">
-                <h3>DrillBot v4</h3>
-                <p>The ultimate moderation bot currently serving 50,000+ members across 100 servers.</p>
-                <a href="#" style="color:var(--primary); text-decoration:none;">View Case Study →</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" style="text-align:center;">
-        <h2 class="reveal" style="border:none;">Ready to Work?</h2>
-        <p class="reveal">We take commissions for high-end projects only.</p>
-        <br>
-        <a href="https://discord.gg/YOUR_LINK" class="btn reveal">JOIN OUR DISCORD</a>
-    </section>
-
-    <footer>
-        <div class="logo">DRILL STUDIOS</div>
-        <p>Built for the community, by the community.</p>
-        <div class="copyright">
-            &copy; 2026 DRILL STUDIOS. All rights reserved. <br>
-            <span style="font-size: 0.7rem; opacity: 0.5;">Not affiliated with Roblox Corporation.</span>
-        </div>
-    </footer>
-
-    <script>
-        // Smooth Animations
-        ScrollReveal().reveal('.reveal', { 
-            delay: 150, 
-            distance: '60px', 
-            origin: 'bottom',
-            duration: 1200,
-            interval: 150 
-        });
-    </script>
-</body>
-</html>
+        <h1 class="reveal">WE ARE <br><span class="red-glow">DRILL STUDIOS</span></h1>
+        <p class="hero-p reveal">The elite choice for high-performance Roblox games
