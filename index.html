@@ -6,76 +6,63 @@
     <title>DRILL STUDIOS | Home</title>
 
     <script async src="https://plausible.io/js/pa-jRu4Cy_TZaScoQQIAHPSx.js"></script>
-    <script>
-      window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-      plausible.init()
-    </script>
-
     <script src="https://unpkg.com/scrollreveal"></script>
 
     <style>
-        /* Base Variables & Smooth Scroll */
         :root { --primary: #ff0000; --bg: #0a0a0a; --card: #151515; }
         html { scroll-behavior: smooth; }
-        body { margin: 0; font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); color: white; overflow-x: hidden; }
+        body { margin: 0; font-family: 'Segoe UI', sans-serif; background: var(--bg); color: white; overflow-x: hidden; }
         
-        /* Fixed Navigation Bar */
+        /* Navigation - Adjusted for Mobile */
         nav { 
             position: fixed; 
-            top: 0; 
-            width: 100%; 
-            box-sizing: border-box;
-            display: flex; 
-            justify-content: center; 
-            gap: 30px; 
-            background: rgba(0, 0, 0, 0.95); 
-            border-bottom: 2px solid var(--primary); 
-            padding: 20px; 
-            z-index: 1000; 
+            top: 0; width: 100%; box-sizing: border-box;
+            display: flex; justify-content: center; gap: 15px; 
+            background: rgba(0, 0, 0, 0.95); border-bottom: 2px solid var(--primary); 
+            padding: 15px; z-index: 1000; 
         }
-        nav a { color: white; text-decoration: none; font-weight: bold; text-transform: uppercase; transition: 0.3s; }
-        nav a:hover { color: var(--primary); }
+        nav a { color: white; text-decoration: none; font-weight: bold; text-transform: uppercase; font-size: 0.9rem; }
 
-        /* Full Screen Home Header */
+        /* Hero Section - Fixed Mobile Clipping */
         header.hero { 
-            height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center; 
-            text-align: center; 
-            /* You can replace 'your-cool-screenshot.jpg' with a real image link later */
+            height: 100vh; display: flex; flex-direction: column; 
+            align-items: center; justify-content: center; text-align: center; 
             background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('your-cool-screenshot.jpg'); 
-            background-size: cover;
-            background-position: center;
-            position: relative; 
-            padding: 0 20px;
+            background-size: cover; background-position: center;
+            position: relative; padding: 0 20px;
+            box-sizing: border-box;
+            padding-top: 80px; /* Pushes content down so Nav doesn't cover it */
         }
         
-        h1 { font-size: 5rem; margin: 0; color: var(--primary); text-shadow: 0 0 30px var(--primary); }
-        h2.subtitle { color: white; letter-spacing: 5px; margin-top: 10px; font-size: 2rem; }
+        h1 { font-size: 5rem; margin: 0; color: var(--primary); text-shadow: 0 0 30px var(--primary); line-height: 1; }
+        h2.subtitle { color: white; letter-spacing: 5px; margin-top: 10px; font-size: 1.5rem; }
         
-        /* Buttons */
-        .btn { display: inline-block; padding: 20px 40px; background: var(--primary); color: white; text-decoration: none; margin-top: 15px; font-size: 1.5rem; font-weight: bold; border-radius: 5px; transition: 0.3s; text-transform: uppercase; }
-        .btn:hover { background: #cc0000; box-shadow: 0 0 20px var(--primary); }
+        /* Mobile Font Scaling */
+        @media (max-width: 600px) {
+            h1 { font-size: 3rem; }
+            h2.subtitle { font-size: 1rem; letter-spacing: 2px; }
+            nav { gap: 10px; padding: 10px; }
+            nav a { font-size: 0.7rem; }
+        }
+
+        .btn { display: inline-block; padding: 15px 30px; background: var(--primary); color: white; text-decoration: none; margin-top: 20px; font-size: 1.2rem; font-weight: bold; border-radius: 5px; text-transform: uppercase; transition: 0.3s; }
+        .btn:hover { box-shadow: 0 0 20px var(--primary); transform: scale(1.05); }
 
         /* Bouncing Arrow */
-        .scroll-down { position: absolute; bottom: 40px; color: var(--primary); text-decoration: none; font-weight: bold; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; animation: bounce 2s infinite; }
-        .scroll-down span { display: block; font-size: 2rem; margin-top: 5px; }
-        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        .scroll-down { position: absolute; bottom: 30px; color: var(--primary); text-decoration: none; font-weight: bold; animation: bounce 2s infinite; cursor: pointer; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-        /* Content Sections */
-        .container { padding: 100px 10%; min-height: 60vh; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px;}
+        .container { padding: 80px 10%; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         .card { background: var(--card); padding: 30px; border-radius: 10px; border-left: 5px solid var(--primary); }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="projects.html">Our Games/Bots</a>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
         <a href="contact.html">Contact</a>
     </nav>
 
@@ -83,44 +70,31 @@
         <h1 class="reveal">DRILL STUDIOS</h1>
         <h2 class="subtitle reveal">UNDER CONSTRUCTION</h2>
         
-        <p class="reveal" style="max-width: 800px; margin: 20px auto; opacity: 0.9; font-size: 1.2rem; line-height: 1.6;">
-            The next generation of Roblox experiences and Discord automation is being forged. <br><br>
-            <strong style="color: var(--primary);">We aren't open yet—but you can get in early.</strong> First 50 People Get 5 Year Premium For The Discord Bot And Special Things In All Games We Make. You Will Also Get Early Access To Games And Beta Features.
+        <p class="reveal" style="max-width: 600px; margin: 20px auto; opacity: 0.9;">
+            The next generation of Roblox experiences and Discord automation is being forged. 
+            <br><b style="color:var(--primary)">First 50 People Get 5 Year Premium.</b>
         </p>
         
-        <div class="reveal" style="margin-top: 30px;">
-            <a href="https://discord.gg/xNguXVnvmU" target="_blank" class="btn">SECURE YOUR OG ROLE</a>
-        </div>
+        <a href="https://discord.gg/xNguXVnvmU" target="_blank" class="btn reveal">SECURE OG ROLE</a>
 
-        <a href="#about" class="scroll-down">
-            Scroll Down
-            <span>↓</span>
+        <a href="#featured" class="scroll-down">
+            SCROLL DOWN<br><span>↓</span>
         </a>
     </header>
 
-    <div id="about" class="container">
-        <h2 class="reveal" style="border-left: 5px solid var(--primary); padding-left: 15px; font-size: 2.5rem; margin-bottom: 20px;">About & Featured Projects</h2>
-        <p class="reveal" style="font-size: 1.1rem; opacity: 0.8; margin-bottom: 40px; max-width: 800px;">
-            Welcome to Drill Studios. Currently operating in stealth mode, we are focused on creating high-quality, high-performance experiences on Roblox, backed by elite Discord bot integration.
-        </p>
-
+    <div id="featured" class="container">
+        <h2 class="reveal" style="border-left: 5px solid var(--primary); padding-left: 15px; margin-bottom: 30px;">FEATURED PROJECTS</h2>
         <div class="grid">
             <div class="card reveal">
-                <h3 style="margin-top: 0; font-size: 1.5rem;">Our Latest Work</h3>
-                <p style="opacity: 0.8;">Check out our full catalog of Roblox games and Discord tools we are currently engineering.</p>
-                <a href="projects.html" class="btn" style="padding: 10px 20px; font-size: 1rem; margin-top: 20px;">View All Projects</a>
+                <h3>Project Strike</h3>
+                <p>High-speed tactical combat. Coming late 2026.</p>
+                <a href="projects.html" class="btn" style="font-size: 0.9rem; padding: 10px 20px;">Details</a>
             </div>
         </div>
     </div>
 
     <script>
-        ScrollReveal().reveal('.reveal', { 
-            distance: '50px', 
-            duration: 1000, 
-            interval: 200,
-            reset: true /* Makes the animation happen every time you scroll past it */
-        });
+        ScrollReveal().reveal('.reveal', { distance: '30px', duration: 1000, interval: 150 });
     </script>
-
 </body>
 </html>
