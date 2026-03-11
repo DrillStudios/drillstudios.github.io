@@ -6,55 +6,78 @@
     <title>DRILL STUDIOS | Home</title>
 
     <script async src="https://plausible.io/js/pa-jRu4Cy_TZaScoQQIAHPSx.js"></script>
+    <script>
+      window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+      plausible.init()
+    </script>
+
     <script src="https://unpkg.com/scrollreveal"></script>
 
     <style>
         :root { --primary: #ff0000; --bg: #0a0a0a; --card: #151515; }
-        html { scroll-behavior: smooth; }
-        body { margin: 0; font-family: 'Segoe UI', sans-serif; background: var(--bg); color: white; overflow-x: hidden; }
+        html { scroll-behavior: smooth; } /* Makes the arrow scroll smooth */
+        body { margin: 0; font-family: sans-serif; background: var(--bg); color: white; overflow-x: hidden; }
         
-        /* Navigation - Adjusted for Mobile */
+        /* Sticky Navigation - Fixed for Mobile */
         nav { 
             position: fixed; 
-            top: 0; width: 100%; box-sizing: border-box;
-            display: flex; justify-content: center; gap: 15px; 
-            background: rgba(0, 0, 0, 0.95); border-bottom: 2px solid var(--primary); 
-            padding: 15px; z-index: 1000; 
-        }
-        nav a { color: white; text-decoration: none; font-weight: bold; text-transform: uppercase; font-size: 0.9rem; }
-
-        /* Hero Section - Fixed Mobile Clipping */
-        header.hero { 
-            height: 100vh; display: flex; flex-direction: column; 
-            align-items: center; justify-content: center; text-align: center; 
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('your-cool-screenshot.jpg'); 
-            background-size: cover; background-position: center;
-            position: relative; padding: 0 20px;
+            top: 0; 
+            width: 100%; 
             box-sizing: border-box;
-            padding-top: 80px; /* Pushes content down so Nav doesn't cover it */
+            padding: 20px; 
+            display: flex; 
+            justify-content: center; 
+            gap: 30px; 
+            background: #000; 
+            border-bottom: 2px solid var(--primary); 
+            z-index: 1000; 
+        }
+        nav a { color: white; text-decoration: none; font-weight: bold; text-transform: uppercase; transition: 0.3s; }
+        nav a:hover { color: var(--primary); }
+
+        /* The Old Full-Screen Hero Look */
+        header.hero { 
+            height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('your-cool-screenshot.jpg'); 
+            background-size: cover;
+            background-position: center;
+            position: relative; 
+            padding: 0 20px;
+            box-sizing: border-box;
         }
         
-        h1 { font-size: 5rem; margin: 0; color: var(--primary); text-shadow: 0 0 30px var(--primary); line-height: 1; }
-        h2.subtitle { color: white; letter-spacing: 5px; margin-top: 10px; font-size: 1.5rem; }
+        h1.title { font-size: 5rem; margin: 0; color: var(--primary); text-shadow: 0 0 30px rgba(255,0,0,0.5); line-height: 1; }
+        h2.subtitle { color: white; letter-spacing: 5px; margin-top: 10px; }
         
-        /* Mobile Font Scaling */
+        .promo-text { max-width: 600px; margin: 20px auto; opacity: 0.8; line-height: 1.6; }
+
+        /* Mobile Adjustments */
         @media (max-width: 600px) {
-            h1 { font-size: 3rem; }
+            h1.title { font-size: 3rem; }
             h2.subtitle { font-size: 1rem; letter-spacing: 2px; }
-            nav { gap: 10px; padding: 10px; }
-            nav a { font-size: 0.7rem; }
+            nav { gap: 15px; padding: 15px; }
+            nav a { font-size: 0.8rem; }
         }
 
-        .btn { display: inline-block; padding: 15px 30px; background: var(--primary); color: white; text-decoration: none; margin-top: 20px; font-size: 1.2rem; font-weight: bold; border-radius: 5px; text-transform: uppercase; transition: 0.3s; }
-        .btn:hover { box-shadow: 0 0 20px var(--primary); transform: scale(1.05); }
+        /* Buttons */
+        .btn { display: inline-block; padding: 20px 40px; background: var(--primary); color: white; text-decoration: none; margin-top: 15px; font-size: 1.5rem; font-weight: bold; border-radius: 5px; transition: 0.3s; }
+        .btn:hover { background: #cc0000; box-shadow: 0 0 20px var(--primary); transform: scale(1.05); }
 
         /* Bouncing Arrow */
-        .scroll-down { position: absolute; bottom: 30px; color: var(--primary); text-decoration: none; font-weight: bold; animation: bounce 2s infinite; cursor: pointer; }
-        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .scroll-down { position: absolute; bottom: 30px; color: var(--primary); text-decoration: none; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; animation: bounce 2s infinite; }
+        .scroll-down span { display: block; font-size: 2rem; margin-top: 5px; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
-        .container { padding: 80px 10%; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        /* Old Projects Grid */
+        .container { padding: 100px 10%; min-height: 50vh; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
         .card { background: var(--card); padding: 30px; border-radius: 10px; border-left: 5px solid var(--primary); }
+        .card .btn { font-size: 1rem; padding: 10px 20px; text-transform: none; }
     </style>
 </head>
 <body>
@@ -62,39 +85,43 @@
     <nav>
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
-        <a href="projects.html">Projects</a>
+        <a href="projects.html">Our Games/Bots</a>
         <a href="contact.html">Contact</a>
     </nav>
 
-    <header id="home" class="hero">
-        <h1 class="reveal">DRILL STUDIOS</h1>
+    <header class="hero">
+        <h1 class="title reveal">DRILL STUDIOS</h1>
         <h2 class="subtitle reveal">UNDER CONSTRUCTION</h2>
         
-        <p class="reveal" style="max-width: 600px; margin: 20px auto; opacity: 0.9;">
-            The next generation of Roblox experiences and Discord automation is being forged. 
-            <br><b style="color:var(--primary)">First 50 People Get 5 Year Premium.</b>
+        <p class="promo-text reveal">
+            The next generation of Roblox experiences and Discord automation is being forged. <br><br>
+            We aren't open yet—but you can get in early. First 50 People Get 5 Year Premium For The Discord Bot And Special Things In All Games We Make. You Will Also Get Early Access To Games And Beta Features.
         </p>
         
-        <a href="https://discord.gg/xNguXVnvmU" target="_blank" class="btn reveal">SECURE OG ROLE</a>
+        <div class="reveal" style="margin-top: 20px;">
+            <a href="https://discord.gg/xNguXVnvmU" target="_blank" class="btn">SECURE YOUR OG ROLE</a>
+        </div>
 
         <a href="#featured" class="scroll-down">
-            SCROLL DOWN<br><span>↓</span>
+            Scroll Down
+            <span>↓</span>
         </a>
     </header>
 
     <div id="featured" class="container">
-        <h2 class="reveal" style="border-left: 5px solid var(--primary); padding-left: 15px; margin-bottom: 30px;">FEATURED PROJECTS</h2>
+        <h2 class="reveal">Feature Projects</h2>
         <div class="grid">
             <div class="card reveal">
-                <h3>Project Strike</h3>
-                <p>High-speed tactical combat. Coming late 2026.</p>
-                <a href="projects.html" class="btn" style="font-size: 0.9rem; padding: 10px 20px;">Details</a>
+                <h3>Our Latest Work</h3>
+                <p>Check out our full catalog of Roblox games and Discord tools.</p>
+                <a href="projects.html" class="btn">View All Projects</a>
             </div>
         </div>
     </div>
 
     <script>
-        ScrollReveal().reveal('.reveal', { distance: '30px', duration: 1000, interval: 150 });
+        ScrollReveal().reveal('.reveal', { distance: '50px', duration: 1000, interval: 200, reset: true });
     </script>
+
 </body>
 </html>
