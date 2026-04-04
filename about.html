@@ -1,46 +1,68 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About | DRILL STUDIOS</title>
-    <style>
-        :root { --primary: #ff0000; --bg: #0a0a0a; --card: #151515; }
-        body { margin: 0; font-family: sans-serif; background: var(--bg); color: white; padding-top: 100px; }
-        
-        nav { position: fixed; top: 0; width: 100%; display: flex; justify-content: center; gap: 20px; background: #000; border-bottom: 2px solid var(--primary); padding: 20px; z-index: 1000; box-sizing: border-box; }
-        nav a { color: white; text-decoration: none; font-weight: bold; text-transform: uppercase; font-size: 0.9rem; }
-        nav a:hover { color: var(--primary); }
 
-        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        h1 { color: var(--primary); font-size: 3rem; text-transform: uppercase; margin-bottom: 10px; }
-        .line { width: 50px; height: 5px; background: var(--primary); margin-bottom: 30px; }
-        p { line-height: 1.8; opacity: 0.8; font-size: 1.2rem; margin-bottom: 20px; }
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <style>
+        :root { --primary: #ff0000; --bg-dark: #050505; --text-muted: #888888; --panel: #111111; }
+        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(--bg-dark); color: white; overflow-x: hidden; }
         
-        .highlight-box { background: var(--card); border-left: 5px solid var(--primary); padding: 25px; margin-top: 40px; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 25px 8%; position: absolute; top: 0; width: 100%; box-sizing: border-box; z-index: 1000; }
+        .logo { font-weight: 900; font-size: 1.8rem; letter-spacing: -1px; text-transform: uppercase; color: white; }
+        .logo span { color: var(--primary); }
+        
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; transition: 0.2s; }
+        .nav-links a:hover { color: white; }
+        .nav-links a.active { color: var(--primary); }
+        
+        .auth-btn { background: var(--panel); padding: 10px 22px; border-radius: 4px; font-size: 0.85rem; font-weight: 700; color: white !important; display: flex; align-items: center; gap: 10px; border: 1px solid #222; text-decoration: none; }
+        
+        .page-header { text-align: center; padding-top: 180px; padding-bottom: 50px; }
+        .page-header h1 { font-weight: 900; font-size: 3rem; text-transform: uppercase; margin: 0; letter-spacing: -1px; }
+        
+        .content-container { max-width: 800px; margin: 0 auto; padding: 0 20px 100px 20px; text-align: center; }
+        .content-container p { color: var(--text-muted); line-height: 1.8; font-size: 1.1rem; margin-bottom: 30px; font-weight: 500; }
+        
+        .highlight-box { background: var(--panel); border-left: 4px solid var(--primary); padding: 30px; border-radius: 0 8px 8px 0; text-align: left; margin-top: 40px; border-top: 1px solid #222; border-right: 1px solid #222; border-bottom: 1px solid #222; }
+        .highlight-box h3 { margin-top: 0; color: white; font-weight: 800; text-transform: uppercase; }
+
+        @media (max-width: 850px) { .nav-links, .auth-btn { display: none; } }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="projects.html">Projects</a>
-        <a href="contact.html">Contact</a>
+        <div class="logo">DRILL<span>STUDIOS</span></div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html" class="active">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="contact.html">Status</a>
+        </div>
+        <a href="https://discord.gg/xNguXVnvmU" class="auth-btn"><i class="fab fa-discord"></i> DISCORD</a>
     </nav>
 
-    <div class="container">
-        <h1>About the Studio</h1>
-        <div class="line"></div>
-        <p>Drill Studios is an elite development team making 5 year old chinese kids make our games.</p>
-        <p>We specialize in high-performance systems, tactical gameplay, and seamless automation. Our mission is to provide players and server owners with tools and experiences that are "built different"—focused on speed, security, and style.</p>
+    <div class="page-header reveal">
+        <h1>ABOUT THE STUDIO</h1>
+    </div>
+
+    <div class="content-container reveal">
+        <p>Drill Studios is an elite development collective pushing the boundaries of the Roblox engine and Discord API integration. We specialize in high-performance systems, tactical gameplay, and seamless automation. But also dont forget, we are working on vr experiences.</p>
+        <p>Our mission is to provide players and server owners with tools and experiences that are "built different"—focused entirely on speed, absolute security, and premium aesthetics.</p>
         
         <div class="highlight-box">
             <h3>The OG Initiative</h3>
-            <p>We are currently in our founding phase. The first 50 supporters to join our ecosystem receive permanent* "Premium" status for our future Discord tools and exclusive rewards across all Drill Studios experiences.</p>
+            <p style="margin-bottom: 0; font-size: 0.95rem;">We are currently in our foundational phase. The first 50 supporters to secure their place in our ecosystem receive permanent "Premium" status for all future Discord tools, beta access to our tactical titles, and exclusive network rewards.</p>
         </div>
     </div>
 
+    <script>ScrollReveal().reveal('.reveal', { distance: '40px', duration: 1000, interval: 150, origin: 'bottom' });</script>
 </body>
 </html>
