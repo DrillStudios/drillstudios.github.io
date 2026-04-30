@@ -3,14 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | DRILL STUDIOS</title>
+    <title>Status & Contact | DRILL STUDIOS</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://unpkg.com/scrollreveal"></script>
 
     <style>
-        :root { --primary: #ff0000; --bg-dark: #050505; --text-muted: #888888; --panel: #111111; }
+        :root { 
+            --primary: #ff0000; 
+            --bg-dark: #050505; 
+            --text-muted: #888888; 
+            --panel: #111111; 
+            
+            /* Status Colors */
+            --color-operational: #2ecc71; /* Green */
+            --color-maintenance: #f39c12; /* Yellow/Orange */
+            --color-offline: #e74c3c;     /* Red */
+        }
+        
         body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(--bg-dark); color: white; overflow-x: hidden; }
         
         nav { display: flex; justify-content: space-between; align-items: center; padding: 25px 8%; position: absolute; top: 0; width: 100%; box-sizing: border-box; z-index: 1000; }
@@ -26,14 +37,34 @@
         
         .page-header { text-align: center; padding-top: 180px; padding-bottom: 50px; }
         .page-header h1 { font-weight: 900; font-size: 3rem; text-transform: uppercase; margin: 0; letter-spacing: -1px; }
-        
-        .content-container { max-width: 800px; margin: 0 auto; padding: 0 20px 100px 20px; text-align: center; }
-        .content-container p { color: var(--text-muted); line-height: 1.8; font-size: 1.1rem; margin-bottom: 30px; font-weight: 500; }
-        
-        .highlight-box { background: var(--panel); border-left: 4px solid var(--primary); padding: 30px; border-radius: 0 8px 8px 0; text-align: left; margin-top: 40px; border-top: 1px solid #222; border-right: 1px solid #222; border-bottom: 1px solid #222; }
-        .highlight-box h3 { margin-top: 0; color: white; font-weight: 800; text-transform: uppercase; }
 
-        @media (max-width: 850px) { .nav-links, .auth-btn { display: none; } }
+        .system-container { max-width: 800px; margin: 0 auto; padding: 0 20px 50px 20px; }
+        
+        .status-row { background: var(--panel); border: 1px solid #222; border-radius: 6px; padding: 25px 30px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .status-name { display: flex; align-items: center; gap: 15px; font-size: 1rem; }
+        .status-name i { color: var(--text-muted); font-size: 1.2rem; }
+        
+        /* Base Status Styles */
+        .status-indicator { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; }
+
+        /* Dynamic Status Classes */
+        .indicator-operational { color: var(--color-operational); }
+        .indicator-operational .dot { background-color: var(--color-operational); box-shadow: 0 0 10px var(--color-operational); }
+
+        .indicator-maintenance { color: var(--color-maintenance); }
+        .indicator-maintenance .dot { background-color: var(--color-maintenance); box-shadow: 0 0 10px var(--color-maintenance); }
+
+        .indicator-offline { color: var(--color-offline); }
+        .indicator-offline .dot { background-color: var(--color-offline); box-shadow: 0 0 10px var(--color-offline); }
+
+        .contact-section { text-align: center; margin-top: 60px; padding-bottom: 100px; }
+        .contact-section p { color: var(--text-muted); font-weight: 500; margin-bottom: 30px; }
+        .cta-btn { background: var(--primary); color: white; padding: 15px 30px; border-radius: 4px; text-decoration: none; font-weight: 800; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; text-transform: uppercase; }
+        .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(255,0,0,0.2); }
+
+        @media (max-width: 850px) { .nav-links, .auth-btn { display: none; } .status-row { flex-direction: column; gap: 15px; text-align: center; } }
     </style>
 </head>
 <body>
@@ -42,25 +73,46 @@
         <div class="logo">DRILL<span>STUDIOS</span></div>
         <div class="nav-links">
             <a href="index.html">Home</a>
-            <a href="about.html" class="active">About</a>
+            <a href="about.html">About</a>
             <a href="projects.html">Projects</a>
-            <a href="contact.html">Status</a>
+            <a href="contact.html" class="active">Status</a>
         </div>
         <a href="https://discord.gg/xNguXVnvmU" class="auth-btn"><i class="fab fa-discord"></i> DISCORD</a>
     </nav>
 
     <div class="page-header reveal">
-        <h1>ABOUT THE STUDIO</h1>
+        <h1>SYSTEM STATUS</h1>
     </div>
 
-    <div class="content-container reveal">
-        <p>Drill Studios is an elite development collective pushing the boundaries of the Roblox engine and Discord API integration. We specialize in high-performance systems, tactical gameplay, and seamless automation.</p>
-        <p>Our mission is to provide players and server owners with tools and experiences that are "built different"-focused entirely on speed, absolute security, and premium aesthetics.</p>
-        
-        <div class="highlight-box">
-            <h3>The OG Initiative</h3>
-            <p style="margin-bottom: 0; font-size: 0.95rem;">We are currently in our founding phase. The first 50 supporters to secure their place in our ecosystem receive permanent "Premium" status for all future Discord tools, beta access to our tactical titles, and exclusive network rewards.</p>
+    <div class="system-container">
+        <!-- Operational Example (Green) -->
+        <div class="status-row reveal">
+            <div class="status-name"><i class="fas fa-globe"></i> Web Infrastructure</div>
+            <div class="status-indicator indicator-operational">
+                <div class="dot"></div> Operational
+            </div>
         </div>
+
+        <!-- Maintenance Example (Yellow) -->
+        <div class="status-row reveal">
+            <div class="status-name"><i class="fas fa-robot"></i> Management Bot Nodes</div>
+            <div class="status-indicator indicator-maintenance">
+                <div class="dot"></div> Under Maintenance
+            </div>
+        </div>
+
+        <!-- Offline/Construction Example (Red) -->
+        <div class="status-row reveal">
+            <div class="status-name"><i class="fas fa-gamepad"></i> Game Servers (Beta)</div>
+            <div class="status-indicator indicator-offline">
+                <div class="dot"></div> Under Construction
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-section reveal">
+        <p>Experiencing an outage or need administrative assistance? Connect directly with our engineering team.</p>
+        <a href="https://discord.gg/xNguXVnvmU" class="cta-btn"><i class="fas fa-headset"></i> CONTACT SUPPORT</a>
     </div>
 
     <script>ScrollReveal().reveal('.reveal', { distance: '40px', duration: 1000, interval: 150, origin: 'bottom' });</script>
