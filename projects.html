@@ -4,53 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | DRILL STUDIOS</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://unpkg.com/scrollreveal"></script>
+
     <style>
-        :root { --primary: #ff0000; --bg: #0a0a0a; --card: #151515; }
-        body { margin: 0; font-family: sans-serif; background: var(--bg); color: white; }
-        nav { padding: 20px; display: flex; justify-content: center; gap: 30px; background: #000; border-bottom: 2px solid var(--primary); }
-        nav a { color: white; text-decoration: none; font-weight: bold; }
-        .container { padding: 50px 10%; }
-        h1 { color: var(--primary); font-size: 3rem; text-align: center; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .project-card { background: var(--card); border: 1px solid #333; border-radius: 15px; overflow: hidden; transition: 0.3s; }
-        .project-card:hover { border-color: var(--primary); transform: scale(1.02); }
-        .content { padding: 20px; }
-        .tag { background: var(--primary); padding: 5px 10px; font-size: 0.8rem; border-radius: 3px; }
+        :root { --primary: #ff0000; --bg-dark: #050505; --text-muted: #888888; --panel: #111111; }
+        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(--bg-dark); color: white; overflow-x: hidden; }
+        
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 25px 8%; position: absolute; top: 0; width: 100%; box-sizing: border-box; z-index: 1000; }
+        .logo { font-weight: 900; font-size: 1.8rem; letter-spacing: -1px; text-transform: uppercase; color: white; }
+        .logo span { color: var(--primary); }
+        
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; transition: 0.2s; }
+        .nav-links a:hover { color: white; }
+        .nav-links a.active { color: var(--primary); }
+        
+        .auth-btn { background: var(--panel); padding: 10px 22px; border-radius: 4px; font-size: 0.85rem; font-weight: 700; color: white !important; display: flex; align-items: center; gap: 10px; border: 1px solid #222; text-decoration: none; }
+        
+        .page-header { text-align: center; padding-top: 180px; padding-bottom: 50px; }
+        .page-header h1 { font-weight: 900; font-size: 3rem; text-transform: uppercase; margin: 0; letter-spacing: -1px; }
+
+        .grid-container { max-width: 1100px; margin: 0 auto; padding: 0 20px 100px 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        
+        .project-card { background: var(--panel); border: 1px solid #222; border-radius: 6px; padding: 40px 30px; transition: 0.3s; position: relative; overflow: hidden; }
+        .project-card:hover { border-color: var(--primary); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(255,0,0,0.1); }
+        .project-card i { font-size: 3rem; color: var(--primary); margin-bottom: 20px; }
+        .project-card h2 { margin: 0 0 15px 0; font-weight: 800; text-transform: uppercase; }
+        .project-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; font-weight: 500; margin-bottom: 30px; }
+        
+        .status-badge { background: rgba(255,0,0,0.1); color: var(--primary); padding: 6px 12px; border-radius: 4px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; border: 1px solid rgba(255,0,0,0.2); display: inline-block; }
+
+        @media (max-width: 850px) { .nav-links, .auth-btn { display: none; } }
     </style>
 </head>
 <body>
-  
-   <nav>
+
+    <nav>
         <div class="logo">DRILL<span>STUDIOS</span></div>
         <div class="nav-links">
-            <a href="index.html" class="active">Home</a>
+            <a href="index.html">Home</a>
             <a href="about.html">About</a>
-            <a href="projects.html">Projects</a>
+            <a href="projects.html" class="active">Projects</a>
             <a href="contact.html">Status</a>
         </div>
         <a href="https://discord.gg/xNguXVnvmU" class="auth-btn"><i class="fab fa-discord"></i> DISCORD</a>
     </nav>
-    
-    <div class="container">
-        <h1>OUR DROPS</h1>
-        <div class="grid">
-            <div class="project-card">
-                <div class="content">
-                    <span class="tag">ROBLOX</span>
-                    <h3>Untitled FPS Game</h3>
-                    <p>A Fun, Fast Paced First Person Shooter With Fun Mechanics, Weapons and Maps</p>
-                    <a href="https://roblox.com" style="color:red; text-decoration:none;">Play Now →</a>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="content">
-                    <span class="tag">DISCORD</span>
-                    <h3>Management Bot</h3>
-                    <p>A Great Moderation Discord Bot Packed With Features Such As A Admin Panel, A Leveling System And So Much More</p>
-                    <a href="https://discord.gg/xNguXVnvmU" style="color:red; text-decoration:none;">Add Bot→</a>
-                </div>
-            </div>
+
+    <div class="page-header reveal">
+        <h1>CORE SYSTEMS</h1>
+    </div>
+
+    <div class="grid-container">
+        <div class="project-card reveal">
+            <i class="fas fa-crosshairs"></i>
+            <h2>Project Strike</h2>
+            <p>A next-generation tactical combat experience built on the Roblox engine. Featuring advanced ballistics, high-fidelity environments, and competitive mechanics.</p>
+            <div class="status-badge">In Development</div>
+        </div>
+
+        <div class="project-card reveal">
+            <i class="fas fa-robot"></i>
+            <h2>Management Bot</h2>
+            <p>Our flagship Discord utility. Fully automated server moderation, complex logging, and advanced role-management designed specifically for high-volume communities.</p>
+            <div class="status-badge">Beta Phase</div>
+        </div>
+
+        <div class="project-card reveal">
+            <i class="fas fa-network-wired"></i>
+            <h2>Drill API</h2>
+            <p>A seamless bridge connecting your in-game Roblox data points directly to your Discord infrastructure for live analytics and remote moderation.</p>
+            <div class="status-badge">Planning Phase</div>
         </div>
     </div>
+
+    <script>ScrollReveal().reveal('.reveal', { distance: '40px', duration: 1000, interval: 150, origin: 'bottom' });</script>
 </body>
 </html>
