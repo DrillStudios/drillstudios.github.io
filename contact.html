@@ -3,39 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | DRILL STUDIOS</title>
+    <title>Status & Contact | DRILL STUDIOS</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://unpkg.com/scrollreveal"></script>
+
     <style>
-        :root { --primary: #ff0000; --bg: #0a0a0a; }
-        body { margin: 0; font-family: sans-serif; background: var(--bg); color: white; text-align: center; }
-        nav { padding: 20px; display: flex; justify-content: center; gap: 30px; background: #000; border-bottom: 2px solid var(--primary); }
-        nav a { color: white; text-decoration: none; font-weight: bold; }
-        .contact-box { margin: 100px auto; max-width: 600px; padding: 40px; background: #111; border: 2px solid var(--primary); border-radius: 20px; }
-        h1 { color: var(--primary); }
-        .email { font-size: 1.5rem; margin: 20px 0; color: #ccc; }
-        .discord-btn { display: inline-block; padding: 15px 30px; background: #5865F2; color: white; text-decoration: none; font-weight: bold; border-radius: 8px; font-size: 1.2rem; }
-        footer { margin-top: 50px; opacity: 0.5; font-size: 0.8rem; }
+        :root { 
+            --primary: #ff0000; 
+            --bg-dark: #050505; 
+            --text-muted: #888888; 
+            --panel: #111111; 
+            
+            /* Status Colors */
+            --color-operational: #2ecc71; /* Green */
+            --color-maintenance: #f39c12; /* Yellow/Orange */
+            --color-offline: #e74c3c;     /* Red */
+        }
+        
+        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(--bg-dark); color: white; overflow-x: hidden; }
+        
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 25px 8%; position: absolute; top: 0; width: 100%; box-sizing: border-box; z-index: 1000; }
+        .logo { font-weight: 900; font-size: 1.8rem; letter-spacing: -1px; text-transform: uppercase; color: white; }
+        .logo span { color: var(--primary); }
+        
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; transition: 0.2s; }
+        .nav-links a:hover { color: white; }
+        .nav-links a.active { color: var(--primary); }
+        
+        .auth-btn { background: var(--panel); padding: 10px 22px; border-radius: 4px; font-size: 0.85rem; font-weight: 700; color: white !important; display: flex; align-items: center; gap: 10px; border: 1px solid #222; text-decoration: none; }
+        
+        .page-header { text-align: center; padding-top: 180px; padding-bottom: 50px; }
+        .page-header h1 { font-weight: 900; font-size: 3rem; text-transform: uppercase; margin: 0; letter-spacing: -1px; }
+
+        .system-container { max-width: 800px; margin: 0 auto; padding: 0 20px 50px 20px; }
+        
+        .status-row { background: var(--panel); border: 1px solid #222; border-radius: 6px; padding: 25px 30px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .status-name { display: flex; align-items: center; gap: 15px; font-size: 1rem; }
+        .status-name i { color: var(--text-muted); font-size: 1.2rem; }
+        
+        /* Base Status Styles */
+        .status-indicator { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; }
+
+        /* Dynamic Status Classes */
+        .indicator-operational { color: var(--color-operational); }
+        .indicator-operational .dot { background-color: var(--color-operational); box-shadow: 0 0 10px var(--color-operational); }
+
+        .indicator-maintenance { color: var(--color-maintenance); }
+        .indicator-maintenance .dot { background-color: var(--color-maintenance); box-shadow: 0 0 10px var(--color-maintenance); }
+
+        .indicator-offline { color: var(--color-offline); }
+        .indicator-offline .dot { background-color: var(--color-offline); box-shadow: 0 0 10px var(--color-offline); }
+
+        .contact-section { text-align: center; margin-top: 60px; padding-bottom: 100px; }
+        .contact-section p { color: var(--text-muted); font-weight: 500; margin-bottom: 30px; }
+        .cta-btn { background: var(--primary); color: white; padding: 15px 30px; border-radius: 4px; text-decoration: none; font-weight: 800; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; text-transform: uppercase; }
+        .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(255,0,0,0.2); }
+
+        @media (max-width: 850px) { .nav-links, .auth-btn { display: none; } .status-row { flex-direction: column; gap: 15px; text-align: center; } }
     </style>
 </head>
 <body>
+
     <nav>
         <div class="logo">DRILL<span>STUDIOS</span></div>
         <div class="nav-links">
-            <a href="index.html" class="active">Home</a>
+            <a href="index.html">Home</a>
             <a href="about.html">About</a>
             <a href="projects.html">Projects</a>
-            <a href="contact.html">Status</a>
+            <a href="contact.html" class="active">Status</a>
         </div>
         <a href="https://discord.gg/xNguXVnvmU" class="auth-btn"><i class="fab fa-discord"></i> DISCORD</a>
     </nav>
-    <div class="contact-box">
-        <h1>GET IN TOUCH</h1>
-        <p>Email us for business inquiries:</p>
-        <div class="email">Drill-Studios@proton.me</div>
-        <p>OR join our Discord for support:</p>
-        <a href="https://discord.gg/xNguXVnvmU" class="discord-btn">Join Discord (xNguXVnvmU)</a>
+
+    <div class="page-header reveal">
+        <h1>SYSTEM STATUS</h1>
     </div>
-    <footer>
-        &copy; 2026 DRILL STUDIOS. All rights reserved.
-    </footer>
+
+    <div class="system-container">
+        <!-- Operational Example (Green) -->
+        <div class="status-row reveal">
+            <div class="status-name"><i class="fas fa-globe"></i> Web Infrastructure</div>
+            <div class="status-indicator indicator-operational">
+                <div class="dot"></div> Operational
+            </div>
+        </div>
+
+        <!-- Maintenance Example (Yellow) -->
+        <div class="status-row reveal">
+            <div class="status-name"><i class="fas fa-robot"></i> Management Bot Nodes</div>
+            <div class="status-indicator indicator-maintenance">
+                <div class="dot"></div> Under Maintenance
+            </div>
+        </div>
+
+        <!-- Offline/Construction Example (Red) -->
+        <div class="status-row reveal">
+            <div class="status-name"><i class="fas fa-gamepad"></i> Game Servers (Beta)</div>
+            <div class="status-indicator indicator-offline">
+                <div class="dot"></div> Under Construction
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-section reveal">
+        <p>Experiencing an outage or need administrative assistance? Connect directly with our engineering team.</p>
+        <a href="https://discord.gg/xNguXVnvmU" class="cta-btn"><i class="fas fa-headset"></i> CONTACT SUPPORT</a>
+    </div>
+
+    <script>ScrollReveal().reveal('.reveal', { distance: '40px', duration: 1000, interval: 150, origin: 'bottom' });</script>
 </body>
 </html>
