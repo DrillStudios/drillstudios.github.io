@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DRILL STUDIOS | Engineering the Future</title>
 
+    <!-- DrillStudios Bot Dashboard Config -->
+    <script>
+        const DRILL_CONFIG = {
+            dashboardUrl: "http://localhost:3001",
+            guildId: "1490987401248641085",
+            apiKey: "Rnivwuehru3y4&^£873yv"
+        };
+    </script>
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://unpkg.com/scrollreveal"></script>
@@ -81,7 +90,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            /* Nudging the logo slightly to the right */
             margin-left: 20px; 
         }
 
@@ -122,7 +130,7 @@
             line-height: 1.6;
         }
 
-        .cta-group { display: flex; gap: 15px; }
+        .cta-group { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
         .cta-btn {
             background: var(--panel);
             color: white;
@@ -150,11 +158,115 @@
         .data-content p { margin: 0; color: #555; font-size: 0.75rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; }
         .data-content h2 { margin: 0; font-size: 2.2rem; font-weight: 800; color: white; }
 
+        /* Bot Dashboard Section */
+        .bot-section {
+            padding: 80px 8%;
+            text-align: center;
+        }
+        .bot-section h2 {
+            font-weight: 900;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .bot-section p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+        .bot-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto 40px;
+        }
+        .bot-card {
+            background: var(--panel);
+            border: 1px solid #222;
+            border-radius: 8px;
+            padding: 30px 20px;
+            transition: 0.3s;
+        }
+        .bot-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        .bot-card i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        .bot-card h4 {
+            margin: 0 0 8px;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+        .bot-card p {
+            margin: 0;
+            font-size: 0.8rem;
+            color: #666;
+        }
+        .dashboard-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--primary);
+            color: white;
+            padding: 16px 36px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+        .dashboard-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(255,0,0,0.3);
+        }
+
+        /* Leaderboard Widget */
+        #drill-leaderboard {
+            background: var(--panel);
+            border: 1px solid #222;
+            border-radius: 8px;
+            padding: 30px;
+            max-width: 500px;
+            margin: 40px auto 0;
+            text-align: left;
+        }
+        #drill-leaderboard h4 {
+            margin: 0 0 15px;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        #drill-leaderboard ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        #drill-leaderboard li {
+            padding: 8px 0;
+            border-bottom: 1px solid #1a1a1a;
+            font-size: 0.85rem;
+            color: #ccc;
+        }
+        #drill-leaderboard li:last-child { border-bottom: none; }
+        #drill-leaderboard .rank { color: var(--primary); font-weight: 800; margin-right: 8px; }
+
         @media (max-width: 850px) {
             .nav-links, .auth-btn { display: none; }
             .data-grid { flex-direction: column; gap: 50px; align-items: center; }
             h1 { font-size: 2.5rem; padding: 0 10px; }
             .brand-logo-container { width: 140px; height: 140px; margin-left: 0; }
+            .bot-section h2 { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -167,6 +279,8 @@
             <a href="about.html">About</a>
             <a href="projects.html">Projects</a>
             <a href="contact.html">Status</a>
+            <!-- ADDED: Bot Dashboard nav link -->
+            <a href="http://localhost:3001" target="_blank">Dashboard</a>
         </div>
         <a href="https://discord.gg/xNguXVnvmU" class="auth-btn"><i class="fab fa-discord"></i> DISCORD</a>
     </nav>
@@ -182,6 +296,8 @@
         <div class="cta-group reveal">
             <a href="https://discord.gg/xNguXVnvmU" class="cta-btn cta-btn-alt"><i class="fas fa-bolt"></i> GET STARTED</a>
             <a href="projects.html" class="cta-btn"><i class="fas fa-layer-group"></i> VIEW PROJECTS</a>
+            <!-- ADDED: Bot Dashboard CTA -->
+            <a href="http://localhost:3001" target="_blank" class="cta-btn"><i class="fas fa-robot"></i> BOT DASHBOARD</a>
         </div>
     </header>
 
@@ -209,6 +325,45 @@
         </div>
     </section>
 
+    <!-- ADDED: Bot Dashboard Section -->
+    <section class="bot-section reveal">
+        <h2>⚡ BOT DASHBOARD</h2>
+        <p>Control your server, manage tickets, check warnings, and view the leaderboard — all from the web.</p>
+
+        <div class="bot-cards">
+            <div class="bot-card">
+                <i class="fas fa-shield-halved"></i>
+                <h4>Moderation</h4>
+                <p>Ban, kick, warn, mute — manage from anywhere</p>
+            </div>
+            <div class="bot-card">
+                <i class="fas fa-trophy"></i>
+                <h4>Leveling</h4>
+                <p>Leaderboard & XP rewards for your community</p>
+            </div>
+            <div class="bot-card">
+                <i class="fas fa-ticket"></i>
+                <h4>Tickets</h4>
+                <p>View and manage support tickets remotely</p>
+            </div>
+            <div class="bot-card">
+                <i class="fas fa-lock"></i>
+                <h4>Permissions</h4>
+                <p>Control which roles can use each command</p>
+            </div>
+        </div>
+
+        <a href="http://localhost:3001" target="_blank" class="dashboard-link">
+            <i class="fas fa-external-link-alt"></i> OPEN DASHBOARD
+        </a>
+
+        <!-- Leaderboard Widget -->
+        <div id="drill-leaderboard">
+            <h4><i class="fas fa-trophy" style="color:var(--primary);"></i> SERVER LEADERBOARD</h4>
+            <div id="drill-data">Loading...</div>
+        </div>
+    </section>
+
     <script>
         ScrollReveal().reveal('.reveal', { 
             distance: '60px', 
@@ -217,6 +372,34 @@
             origin: 'bottom',
             easing: 'cubic-bezier(0.5, 0, 0, 1)'
         });
+
+        // Load leaderboard from bot dashboard
+        (function loadLeaderboard() {
+            const guildId = DRILL_CONFIG.guildId;
+            const apiKey = DRILL_CONFIG.apiKey;
+            const dashboardUrl = DRILL_CONFIG.dashboardUrl;
+
+            if (guildId === "YOUR_SERVER_ID") {
+                document.getElementById('drill-data').innerHTML = 'Set your Server ID in the script at the top.';
+                return;
+            }
+
+            fetch(dashboardUrl + '/api/guild/' + guildId + '/leaderboard?api_key=' + apiKey + '&limit=5')
+                .then(r => r.json())
+                .then(data => {
+                    if (!data.leaderboard || data.leaderboard.length === 0) {
+                        document.getElementById('drill-data').innerHTML = 'No XP earned yet. Start chatting!';
+                        return;
+                    }
+                    const list = data.leaderboard.map((u, i) => 
+                        '<li><span class="rank">#' + (i + 1) + '</span> Level ' + u.level + ' — ' + u.total_xp + ' XP</li>'
+                    ).join('');
+                    document.getElementById('drill-data').innerHTML = '<ul>' + list + '</ul>';
+                })
+                .catch(() => {
+                    document.getElementById('drill-data').innerHTML = 'Dashboard is offline.';
+                });
+        })();
     </script>
 
 </body>
